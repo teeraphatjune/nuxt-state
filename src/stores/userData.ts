@@ -1,17 +1,15 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 interface userData {
-  id: number;
+  id: string;
   firstName?: string;
   lastName?: string;
   comment?: string;
 }
-
-export const useUserDataStore = defineStore({
-  id: "userData",
+export const useUserDataStore = defineStore('userData', {
   state: () => ({
     Items: <userData[]>[],
-    test: "test_text" as string,
+    test: ref('test'),
   }),
   getters: {
     getTest: (state): string => state.test, // get normal text
@@ -20,6 +18,7 @@ export const useUserDataStore = defineStore({
   actions: {
     addItem(firstname: string, lastname: string, comment: string) {
       this.Items.push(<userData>{
+        id: uuidv4(),
         firstName: firstname,
         lastName: lastname,
         comment: comment,

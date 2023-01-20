@@ -1,10 +1,11 @@
 <template>
   <div>
-    <form>
+    <form @submit.prevent="addUserData">
       <div class="form-group">
         <label for="firstName">Firstname</label>
         <input
           type="text"
+          v-model="firstname"
           class="form-control"
           id="firstName"
           aria-describedby="emailHelp"
@@ -18,6 +19,7 @@
         <label for="lastName">LastName</label>
         <input
           type="text"
+          v-model="lastname"
           class="form-control"
           id="lastName"
           placeholder="Lastname"
@@ -27,6 +29,7 @@
         <label for="comment">Comment</label>
         <input
           type="text"
+          v-model="comment"
           class="form-control"
           id="comment"
           placeholder="Comment"
@@ -36,7 +39,7 @@
       <button type="submit" class="btn btn-primary">Add</button>
     </form>
   </div>
-  <div>{{ userData.getTest }}</div>
+  {{ userData.test }}
   <table class="table table-striped">
     <thead>
       <tr>
@@ -66,17 +69,24 @@ import { useUserDataStore } from "../stores/userData";
 export default defineComponent({
   setup() {
     const userData = useUserDataStore();
-    const addUserData = (
-      firstname: string,
-      lastname: string,
-      comment: string
-    ) => {
-      userData.addItem(firstname, lastname, comment);
+    const firstname = ref("");
+    const lastname = ref("");
+    const comment = ref("");
+    userData.test = "t12312";
+
+    const addUserData = () => {
+      userData.addItem(firstname.value, lastname.value, comment.value);
+      firstname.value = "";
+      lastname.value = "";
+      comment.value = "";
     };
 
     return {
+      firstname,
+      lastname,
+      comment,
       userData,
-      addUserData
+      addUserData,
     };
   },
 });
