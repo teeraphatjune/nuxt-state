@@ -56,7 +56,7 @@
         <td>{{ item.firstName }}</td>
         <td>{{ item.lastName }}</td>
         <td>{{ item.comment }}</td>
-        <td></td>
+        <td><button type="submit" class="btn btn-danger" @click="deleteUserData(item.id)">Delete</button></td>
       </tr>
     </tbody>
   </table>
@@ -64,8 +64,6 @@
 
 <script lang="ts">
 import { useUserDataStore } from "../stores/userData";
-// const userData = useUserDataStore()
-
 export default defineComponent({
   setup() {
     const userData = useUserDataStore();
@@ -81,12 +79,17 @@ export default defineComponent({
       comment.value = "";
     };
 
+    const deleteUserData = (id : string) => {
+      userData.deleteItem(id);
+    };
+
     return {
       firstname,
       lastname,
       comment,
       userData,
       addUserData,
+      deleteUserData,
     };
   },
 });

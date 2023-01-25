@@ -24,9 +24,12 @@ export const useUserDataStore = defineStore('userData', {
         comment: comment,
       });
     },
+    deleteItem(id: string) {
+      const index = this.Items.findIndex(item => item.id === id);
+      if (index > -1) {
+        this.Items = [...this.Items.slice(0, index), ...this.Items.slice(index + 1)];
+      }
+    },
   },
 });
 
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useUserDataStore, import.meta.hot));
-}
