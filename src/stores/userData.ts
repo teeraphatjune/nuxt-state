@@ -13,7 +13,7 @@ export const useUserDataStore = defineStore("userData", () => {
   const test : Ref<string> = ref('test text');
 
   const getItems = computed(() : userData[] => items.value)
-  const getTest = computed(() => test.value)
+  const getTest = computed(() : string => test.value)
 
   const addItem = (firstname: string, lastname: string, comment: string): void => {
       items.value.push(<userData>{
