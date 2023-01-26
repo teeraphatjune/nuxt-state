@@ -97,16 +97,4 @@ export default defineComponent({
   },
 });
 
-// export default {
-//   data() {
-//     return {
-//       tableRows: [
-//         { firstname: 1123, lastname: 2, comment: 3 },
-//         { firstname: 1123, lastname: 2, comment: 3 },
-//       ],
-//       userData : useUserDataStore()
-//     };
-//   },
-//   methods: {},
-// };
 </script>
