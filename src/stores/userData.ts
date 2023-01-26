@@ -9,7 +9,7 @@ interface userData {
 export const useUserDataStore = defineStore('userData', {
   state: () => ({
     Items: <userData[]>[],
-    test: ref('test'),
+    test: ref('test text'),
   }),
   getters: {
     getTest: (state): string => state.test, // get normal text

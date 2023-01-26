@@ -1,6 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="addUserData">
+      Store : {{ userData.getTest }}
       <div class="form-group">
         <label for="firstName">Firstname</label>
         <input
@@ -73,7 +74,7 @@ export default defineComponent({
     const firstname: Ref<string> = ref("");
     const lastname: Ref<string> = ref("");
     const comment: Ref<string> = ref("");
-
+    userData.test = 'test from Form';
     const addUserData = () => {
       userData.addItem(firstname.value, lastname.value, comment.value);
       firstname.value = "";
