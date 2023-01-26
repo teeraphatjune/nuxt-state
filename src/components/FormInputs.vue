@@ -1,5 +1,6 @@
 <template>
   <div>
+    Store : {{ userData.getTest }}
     <form @submit.prevent="addUserData">
       <div class="form-group">
         <label for="firstName">Firstname</label>
