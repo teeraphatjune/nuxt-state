@@ -68,17 +68,54 @@
 </template>
 
 <script lang="ts">
+import { defineStore } from "pinia";
 import { comment } from "postcss";
 import { Ref } from "vue";
-import { useUserDataStore } from "../stores/userData";
+import { v4 as uuidv4 } from "uuid";
+
+interface userData {
+  id: string;
+  firstName?: string;
+  lastName?: string;
+  comment?: string;
+}
+
 export default defineComponent({
   setup() {
-    
+    const useUserDataStore = defineStore("userData", {
+      state: () => ({
+        Items: <userData[]>[],
+        test: ref("test text"),
+      }),
+      getters: {
+        getTest: (state): string => state.test, // get normal text
+        getItems: (state): userData[] => state.Items,
+      },
+      actions: {
+        addItem(firstname: string, lastname: string, comment: string): void {
+          this.Items.push(<userData>{
+            id: uuidv4(),
+            firstName: firstname,
+            lastName: lastname,
+            comment: comment,
+          });
+        },
+        deleteItem(id: string): void {
+          const index = this.Items.findIndex((item) => item.id === id);
+          if (index > -1) {
+            this.Items = [
+              ...this.Items.slice(0, index),
+              ...this.Items.slice(index + 1),
+            ];
+          }
+        },
+      },
+    });
     const userData = useUserDataStore();
     const firstname: Ref<string> = ref("");
     const lastname: Ref<string> = ref("");
     const comment: Ref<string> = ref("");
-    
+
     const addUserData = async () => {
       userData.addItem(firstname.value, lastname.value, comment.value);
       firstname.value = "";
