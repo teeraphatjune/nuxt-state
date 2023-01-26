@@ -9,7 +9,7 @@
           v-model="firstname"
           class="form-control"
           id="firstName"
-          aria-describedby="emailHelp"
+          aria-describedby="firstnameHelp"
           placeholder="Firstname"
         />
       </div>
@@ -54,7 +54,13 @@
         <td>{{ item.lastName }}</td>
         <td>{{ item.comment }}</td>
         <td>
-          <button type="submit" class="btn btn-danger" @click="deleteUserData(item.id)">Delete</button>
+          <button
+            type="submit"
+            class="btn btn-danger"
+            @click="deleteUserData(item.id)"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
@@ -67,19 +73,20 @@ import { Ref } from "vue";
 import { useUserDataStore } from "../stores/userData";
 export default defineComponent({
   setup() {
+    
     const userData = useUserDataStore();
     const firstname: Ref<string> = ref("");
     const lastname: Ref<string> = ref("");
     const comment: Ref<string> = ref("");
-    userData.test = 'test from Form';
-    const addUserData = () => {
+    
+    const addUserData = async () => {
       userData.addItem(firstname.value, lastname.value, comment.value);
       firstname.value = "";
       lastname.value = "";
       comment.value = "";
     };
 
-    const deleteUserData = (id : string) => {
+    const deleteUserData = (id: string) => {
       userData.deleteItem(id);
     };
 
@@ -93,17 +100,4 @@ export default defineComponent({
     };
   },
 });
-
-// export default {
-//   data() {
-//     return {
-//       tableRows: [
-//         { firstname: 1123, lastname: 2, comment: 3 },
-//         { firstname: 1123, lastname: 2, comment: 3 },
-//       ],
-//       userData : useUserDataStore()
-//     };
-//   },
-//   methods: {},
-// };
 </script>
