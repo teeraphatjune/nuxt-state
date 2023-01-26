@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <FormInputs />
+    <NuxtLayout>
+      <NuxtPage/>
+    </NuxtLayout>
   </div>
 </template>
 
