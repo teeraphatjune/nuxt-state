@@ -39,7 +39,6 @@
       <button type="submit" class="btn btn-primary">Add</button>
     </form>
   </div>
-  {{ userData.test }}
   <table class="table table-striped">
     <thead>
       <tr>
@@ -56,21 +55,24 @@
         <td>{{ item.firstName }}</td>
         <td>{{ item.lastName }}</td>
         <td>{{ item.comment }}</td>
-        <td><button type="submit" class="btn btn-danger" @click="deleteUserData(item.id)">Delete</button></td>
+        <td>
+          <button type="submit" class="btn btn-danger" @click="deleteUserData(item.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script lang="ts">
+import { comment } from "postcss";
+import { Ref } from "vue";
 import { useUserDataStore } from "../stores/userData";
 export default defineComponent({
   setup() {
     const userData = useUserDataStore();
-    const firstname = ref("");
-    const lastname = ref("");
-    const comment = ref("");
-    userData.test = "t12312";
+    const firstname: Ref<string> = ref("");
+    const lastname: Ref<string> = ref("");
+    const comment: Ref<string> = ref("");
 
     const addUserData = () => {
       userData.addItem(firstname.value, lastname.value, comment.value);

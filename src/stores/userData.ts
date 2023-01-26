@@ -1,4 +1,4 @@
-import { defineStore, acceptHMRUpdate } from "pinia";
+import { defineStore } from "pinia";
 import { v4 as uuidv4 } from "uuid";
 interface userData {
   id: string;
@@ -16,7 +16,7 @@ export const useUserDataStore = defineStore('userData', {
     getItems: (state): userData[] => state.Items,
   },
   actions: {
-    addItem(firstname: string, lastname: string, comment: string) {
+    addItem(firstname: string, lastname: string, comment: string) : void {
       this.Items.push(<userData>{
         id: uuidv4(),
         firstName: firstname,
@@ -24,7 +24,7 @@ export const useUserDataStore = defineStore('userData', {
         comment: comment,
       });
     },
-    deleteItem(id: string) {
+    deleteItem(id: string) : void{
       const index = this.Items.findIndex(item => item.id === id);
       if (index > -1) {
         this.Items = [...this.Items.slice(0, index), ...this.Items.slice(index + 1)];
