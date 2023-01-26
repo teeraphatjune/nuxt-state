@@ -9,10 +9,10 @@ interface userData {
 }
 
 export const useUserDataStore = defineStore("userData", () => {
-  const items = ref(<userData[]>[]);
-  const test = ref('test text');
+  const items : Ref<userData[]> = ref(<userData[]>[]);
+  const test : Ref<string> = ref('test text');
 
-  const getItems = computed(() => items.value)
+  const getItems = computed(() : userData[] => items.value)
   const getTest = computed(() => test.value)
 
   const addItem = (firstname: string, lastname: string, comment: string): void => {

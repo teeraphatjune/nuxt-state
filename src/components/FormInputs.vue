@@ -65,6 +65,7 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from 'pinia'
 import { comment } from "postcss";
 import { Ref } from "vue";
 import { useUserDataStore } from "../stores/userData";
@@ -74,7 +75,6 @@ export default defineComponent({
     const firstname: Ref<string> = ref("");
     const lastname: Ref<string> = ref("");
     const comment: Ref<string> = ref("");
-    
     const addUserData = () => {
       userData.addItem(firstname.value, lastname.value, comment.value);
       firstname.value = "";
