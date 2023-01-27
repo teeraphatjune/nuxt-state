@@ -40,6 +40,7 @@
       <div class="row">
         <div class="col">
           <button type="submit" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-primary ms-2" @click="resetStore()">Reset</button>
         </div>
         <div class="col text-end">
           <NuxtLink to="/about"><li class="btn btn-warning">Next</li></NuxtLink>
@@ -78,6 +79,7 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from "pinia";
 import { Ref } from "vue";
 import { useUserDataStore } from "../stores/userData";
 export default defineComponent({
@@ -97,6 +99,10 @@ export default defineComponent({
       userData.deleteItem(id);
     };
 
+    const resetStore = () => {
+      userData.$reset();
+    }
+
     return {
       firstname,
       lastname,
@@ -104,6 +110,7 @@ export default defineComponent({
       userData,
       addUserData,
       deleteUserData,
+      resetStore,
     };
   },
 });
