@@ -1,6 +1,5 @@
 <template>
   <div>
-    Store : {{ userData.getTest }}
     <form @submit.prevent="addUserData">
       Store : {{ userData.getTest }}
       <div class="form-group">
@@ -40,7 +39,7 @@
           <button type="submit" class="btn btn-primary">Add</button>
         </div>
         <div class="col text-end">
-          
+          <NuxtLink to="/about"><li class="btn btn-warning">Next</li></NuxtLink>
         </div>
       </div>
     </form>
@@ -80,7 +79,6 @@ import { defineStore } from "pinia";
 import { comment } from "postcss";
 import { Ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
-import exampleModal from "./exampleModal.vue";
 
 interface userData {
   id: string;
