@@ -78,7 +78,6 @@
 </template>
 
 <script lang="ts">
-import { storeToRefs } from "pinia";
 import { Ref } from "vue";
 import { useUserDataStore } from "../stores/userData";
 export default defineComponent({
