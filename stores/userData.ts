@@ -7,10 +7,11 @@ interface userData {
   lastName?: string;
   comment?: string;
 }
-const items : Ref<userData[]> = ref(<userData[]>[]);
-const test : Ref<string> = ref('test text');
-export const useUserDataStore = defineStore("userData", () => {
 
+export const useUserDataStore = defineStore("userData", () => {
+  const items : Ref<userData[]> = ref(<userData[]>[]);
+  const test : Ref<string> = ref('test text');
+  
   const getItems = computed(() : userData[] => items.value)
   const getTest = computed(() : string => test.value)
 

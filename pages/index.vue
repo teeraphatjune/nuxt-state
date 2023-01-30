@@ -40,7 +40,6 @@
       <div class="row">
         <div class="col">
           <button type="submit" class="btn btn-primary">Add</button>
-          <button type="button" class="btn btn-primary ms-2" @click="resetStore()">Reset</button>
         </div>
         <div class="col text-end">
           <NuxtLink to="/about"><li class="btn btn-warning">Next</li></NuxtLink>
