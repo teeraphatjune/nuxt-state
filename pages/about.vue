@@ -16,7 +16,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useUserDataStore } from "../stores/userData";
-const userData = useUserDataStore();
+import { useNumberData } from "../stores/numberData";
+const numberData = useNumberData();
 
 </script>
