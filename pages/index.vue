@@ -4,7 +4,9 @@
   <HomeFormMinus />
   <HomeFormMultiple />
   <HomeFormDivide />
+  ------------------------
+  <DynamicComponent />
 </template>
-<script lang="ts">
-
+<script setup lang="ts">
+const componentName = "HomeFormMultiple"
 </script>
